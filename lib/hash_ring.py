@@ -1,3 +1,4 @@
+from __future__ import generators
 import zlib
 
 POINTS_PER_SERVER=160
@@ -18,12 +19,12 @@ def binary_search(ary,value):
 
 class HashRing(object):
     
-    def __init__(self,nodes[],replicas=POINTS_PER_SERVER):
+    def __init__(self,nodes,replicas=POINTS_PER_SERVER):
         self.replicas = replicas
         self.ring = {}
         self.nodes = []
         self.sorted_keys = []
-        for node in self.nodes:
+        for node in nodes:
             add_node(node)
     
 
@@ -56,9 +57,9 @@ class HashRing(object):
 
     def iter_nodes(key):
         if self.ring.size == 0:
-            return [None,None]
+            yield [None,None]
         pos = get_node_post(key)[1]
         for key in self.sorted_keys[pos:]:
             yield self.ring[key]
-        
+
 
