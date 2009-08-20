@@ -41,9 +41,7 @@ class HashRing(object):
         for i in range(self.replicas):
             key = zlib.crc32("%s:%d" % (node,i))
             del self.ring[key]
-            for k in self.sorted_keys:
-                if key == k:
-                    self.sorted_keys.remove(k)
+            self.sorted_keys.remove(k)
     
     def get_node(key):
         get_node_pos(key)[0]
