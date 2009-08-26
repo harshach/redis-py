@@ -927,7 +927,7 @@ class Redis(object):
             self._fp = self._sock.makefile('r')
 
 
-if __name__ == '__main__':
+'''if __name__ == '__main__':
     import doctest
-    doctest.testmod()
+    doctest.testmod()'''
     
